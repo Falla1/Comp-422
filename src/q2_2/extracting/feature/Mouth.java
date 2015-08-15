@@ -13,12 +13,14 @@ public class Mouth implements Feature {
 
 		int w = ip.getWidth();
 		int h = ip.getHeight();
+		
+		Manipulation.threshold(ip);
 
 		double total = 0;
 		int count = 0;
 
-		for (int x=0; x < w/2; x++) {
-			for (int y=0; y < h/2; y++) {
+		for (int x=0; x < w; x++) {
+			for (int y=h/2; y < h; y++) {
 				total += ip.getPixelValue(x, y);
 				count++;
 			}
@@ -28,28 +30,4 @@ public class Mouth implements Feature {
 
 	}
 
-/*	@Override
-	public double valueOf(ImageProcessor main) {
-
-		ImageProcessor ip = main.duplicate();
-
-		Manipulation.threshold(ip);
-
-		int w = ip.getWidth();
-		int h = ip.getHeight();
-
-		int total = 0 ;
-
-		for (int x=3; x < w-3; x++) {
-			for (int y=h/2 - 2 ; y < h; y++) {
-
-				double pixel_x = ip.getPixel(x, y);
-
-				if(pixel_x == 0){
-					total++;
-				}
-			}
-		}
-		return total;
-	}*/
 }

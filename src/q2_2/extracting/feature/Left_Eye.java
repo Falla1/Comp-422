@@ -18,7 +18,7 @@ public class Left_Eye implements Feature {
 		int count = 0 ;
 
 		for (int x=0; x < (w/2); x++) {
-			for (int y=3; y < 6; y++) {
+			for (int y=0; y < h/2; y++) {
 				total += ip.getPixelValue(x, y);
 				count++;
 			}

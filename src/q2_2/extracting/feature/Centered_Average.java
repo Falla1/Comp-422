@@ -10,11 +10,11 @@ public class Centered_Average implements Feature {
 		int w = ip.getWidth();
 		int h = ip.getHeight();
 
-		int totalCenter = 0;
+		double totalCenter = 0;
 		int i_center = 0;
 
-		for (int x=3; x < w-3; x++) {
-			for (int y=h/2 - 2 ; y < h; y++) {
+		for (int x=(w/2)-3; x < (w/2)+3; x++) {
+			for (int y=(h/2) - 3 ; y < (h/2) + 3; y++) {
 				double pixel_x = ip.getPixel(x, y);
 				totalCenter += pixel_x;
 				i_center++;

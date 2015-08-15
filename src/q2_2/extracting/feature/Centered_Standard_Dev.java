@@ -16,8 +16,8 @@ public class Centered_Standard_Dev implements Feature{
 		double total = 0;
 		double count = 0;
 
-		for (int x=3; x < w-3; x++) {
-			for (int y=h/2 - 2 ; y < h; y++) {
+		for (int x=(w/2)-3; x < (w/2)+3; x++) {
+			for (int y=(h/2) - 3 ; y < (h/2) + 3; y++) {
 				double pixel_x = ip.getPixel(x, y);
 				total += pixel_x;
 				count++;
@@ -28,8 +28,8 @@ public class Centered_Standard_Dev implements Feature{
 
 		double sum = 0;
 
-		for (int x=3; x < w-3; x++) {
-			for (int y=h/2 - 2 ; y < h; y++) {
+		for (int x=(w/2)-3; x < (w/2)+3; x++) {
+			for (int y=(h/2) - 3 ; y < (h/2) + 3; y++) {
 				sum += Math.pow((ip.getPixelValue(x, y) - mean),2);
 			}
 		}
