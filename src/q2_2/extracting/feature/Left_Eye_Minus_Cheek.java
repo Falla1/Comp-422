@@ -27,7 +27,6 @@ public class Left_Eye_Minus_Cheek implements Feature {
 		for (int x=3; x < 6; x++) {
 			for (int y=5; y < 8; y++) {
 				cheekTotal += ip.getPixelValue(x, y);
-				count++;
 			}
 		}
 

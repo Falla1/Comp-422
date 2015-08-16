@@ -51,8 +51,7 @@ public class Naive {
 			System.out.println(strSummary);
 
 			//get the index of class
-			System.out.println(eva.falsePositiveRate(test.classIndex()));
-
+			System.out.println(eva.weightedTruePositiveRate());
 
 			ThresholdCurve tc = new ThresholdCurve();
 			int classIndex = 0;

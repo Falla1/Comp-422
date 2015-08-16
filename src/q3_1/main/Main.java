@@ -24,6 +24,8 @@ public class Main {
 
 		classifier.testClassifier(test);
 
+
+
 	}
 
 	public static void main(String args[]){

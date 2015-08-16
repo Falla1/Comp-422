@@ -81,6 +81,13 @@ public class Classifier {
 			System.out.println();
 		}
 
+		try {
+			System.out.println(classifier.graph());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 	}
 
 }
