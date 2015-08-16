@@ -51,7 +51,7 @@ public class Manipulation {
 			}
 		}
 
-		return 1.0/total;
+		return (total+0.0)/(w*h);
 	}
 
 	public static void edgeDect(ImageProcessor ip){

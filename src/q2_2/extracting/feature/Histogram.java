@@ -21,7 +21,7 @@ public class Histogram implements Feature {
 			}
 		}
 
-		return (1/(w*h)) * total;
+		return (1.0/(w*h)) * total;
 
 	}
 }

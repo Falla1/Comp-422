@@ -9,22 +9,31 @@ public class Left_Eye implements Feature {
 	@Override
 	public double valueOf(ImageProcessor main) {
 
+
 		ImageProcessor ip = main.duplicate();
+
+		Manipulation.threshold(ip);
 
 		int w = ip.getWidth();
 		int h = ip.getHeight();
 
-		double total = 0;
-		int count = 0 ;
+		int total = 0 ;
 
 		for (int x=0; x < (w/2); x++) {
-			for (int y=0; y < h/2; y++) {
-				total += ip.getPixelValue(x, y);
-				count++;
+			for (int y=0; y < (h/2)-3; y++) {
+
+				double pixel_x = ip.getPixel(x, y);
+
+				if(pixel_x == 0){
+					total++;
+				}
+
+
 			}
 		}
 
-		return total/count;
+
+		return total;
 	}
 
 }

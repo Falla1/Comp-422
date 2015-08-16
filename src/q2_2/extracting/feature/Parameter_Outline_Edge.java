@@ -51,7 +51,7 @@ public class Parameter_Outline_Edge implements Feature {
 			}
 		}
 
-		return total/i;
+		return (total+0.0)/i;
 	}
 
 }

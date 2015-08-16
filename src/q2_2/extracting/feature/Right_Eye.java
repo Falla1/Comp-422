@@ -19,7 +19,7 @@ public class Right_Eye implements Feature {
 		int total = 0 ;
 
 		for (int x=w/2; x < w; x++) {
-			for (int y=0; y < h/2; y++) {
+			for (int y=0; y < (h/2)-3; y++) {
 
 				double pixel_x = ip.getPixel(x, y);
 

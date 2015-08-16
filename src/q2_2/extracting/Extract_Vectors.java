@@ -17,12 +17,11 @@ import q2_2.extracting.feature.Nose;
 import q2_2.extracting.feature.Parameter_Outline_Edge;
 import q2_2.extracting.feature.Right_Eye;
 import q2_2.extracting.feature.Right_Eye_Minus_Cheek;
-import q2_2.extracting.feature.Standard_Deviation;
 
 public class Extract_Vectors {
 
 
-	public static final int featureSize = 11;
+	public static final int featureSize = 10;
 	private Feature[] features = new Feature[featureSize];
 	private String type;
 
@@ -95,11 +94,10 @@ public class Extract_Vectors {
 		features[3] = new Mouth();
 		features[4] = new Parameter_Outline_Edge();
 		features[5] = new Histogram();
-		features[6] = new Standard_Deviation();
-		features[7] = new Centered_Average();
-		features[8] = new Centered_Standard_Dev();
-		features[9] = new Left_Eye_Minus_Cheek();
-		features[10] = new Right_Eye_Minus_Cheek();
+		features[6] = new Centered_Average();
+		features[7] = new Centered_Standard_Dev();
+		features[8] = new Left_Eye_Minus_Cheek();
+		features[9] = new Right_Eye_Minus_Cheek();
 	}
 
 

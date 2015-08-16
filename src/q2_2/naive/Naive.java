@@ -45,7 +45,7 @@ public class Naive {
 
 			eva = new Evaluation(training);
 
-			eva.evaluateModel(bayes, training);
+			eva.evaluateModel(bayes, test);
 
 			String strSummary = eva.toSummaryString();
 			System.out.println(strSummary);

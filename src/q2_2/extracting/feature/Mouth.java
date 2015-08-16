@@ -13,20 +13,22 @@ public class Mouth implements Feature {
 
 		int w = ip.getWidth();
 		int h = ip.getHeight();
-		
+
 		Manipulation.threshold(ip);
 
 		double total = 0;
-		int count = 0;
 
 		for (int x=0; x < w; x++) {
 			for (int y=h/2; y < h; y++) {
-				total += ip.getPixelValue(x, y);
-				count++;
+				double pixel_x = ip.getPixel(x, y);
+
+				if(pixel_x == 0){
+					total++;
+				}
 			}
 		}
 
-		return (total+0.0)/(count);
+		return (total);
 
 	}
 
