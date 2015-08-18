@@ -45,13 +45,31 @@ public class Naive {
 
 			eva = new Evaluation(training);
 
-			eva.evaluateModel(bayes, test);
+			eva.evaluateModel(bayes, training);
 
 			String strSummary = eva.toSummaryString();
 			System.out.println(strSummary);
 
-			//get the index of class
-			System.out.println(eva.weightedTruePositiveRate());
+			double[][] matrix = eva.confusionMatrix();
+
+			try {
+				System.out.println(eva.toClassDetailsString());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+			System.out.println("\t\tFace\tNon-Face");
+			for(int i = 0 ; i < matrix.length ; i ++){
+				if(i == 0)
+					System.out.print("Face \t\t");
+				else
+					System.out.print("Non-Face\t");
+				for(int j = 0 ; j < matrix[i].length ; j ++){
+					System.out.print(matrix[i][j] + " ");
+				}
+				System.out.println();
+			}
 
 			ThresholdCurve tc = new ThresholdCurve();
 			int classIndex = 0;
