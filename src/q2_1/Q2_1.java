@@ -15,7 +15,7 @@ public class Q2_1 {
 
 	private double sobel_x[][];
 
-	private int matrixSize = 11;
+	private int matrixSize = 3;
 
 	private double sobel_value = 1.0/(matrixSize * matrixSize);
 
@@ -38,12 +38,12 @@ public class Q2_1 {
 
 		Q2_1 q2 = new Q2_1();
 
-		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.1/hubble.tif");
+		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.1/hubbleNoise.tif");
 		//ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.1/Test.jpg");
 
 		ImageProcessor ip = image.getProcessor();
 
-		//q2.meanFilter(ip);
+		q2.meanFilter(ip);
 
 		q2.threshold(ip);
 

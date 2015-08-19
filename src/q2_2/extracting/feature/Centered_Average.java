@@ -21,7 +21,7 @@ public class Centered_Average implements Feature {
 			}
 		}
 
-		return totalCenter/i_center;
+		return (totalCenter+0.0)/i_center;
 	}
 
 }

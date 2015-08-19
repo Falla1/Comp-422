@@ -1,6 +1,7 @@
 package q2_2.extracting;
 
 import ij.ImagePlus;
+import ij.gui.ImageWindow;
 import ij.process.ImageProcessor;
 
 import java.io.File;
@@ -49,7 +50,13 @@ public class Extract_Vectors {
 			if(!face[i].isDirectory()){
 				ImagePlus image = new ImagePlus(face[i].getAbsolutePath());
 
-				featuresOfImagesFaces[i] = extractFeatures(image);
+				Manipulation.threshold(image.getChannelProcessor());
+
+				new ImageWindow(image);
+
+				break;
+
+				//featuresOfImagesFaces[i] = extractFeatures(image);
 			}
 		}
 

@@ -36,6 +36,8 @@ public class Manipulation {
 			}
 		}
 
+
+
 	}
 
 	private static double calculateThreshold(ImageProcessor ip) {

@@ -11,7 +11,7 @@ import java.util.List;
 public class Q1_2b {
 
 
-	int matrixSize = 3;
+	int matrixSize = 5;
 
 	public static void main(String args[]){
 

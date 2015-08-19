@@ -13,11 +13,11 @@ import ij.process.*;
 public class Q1_1 {
 
 
-    private int sobel_x[][] = {{-1,0,1},
+    private int mask_X[][] = {{-1,0,1},
                        {-2,0,2},
                        {-1,0,1}};
 
-    private int sobel_y[][] = {{-1,-2,-1},
+    private int mask_Y[][] = {{-1,-2,-1},
                        {0,0,0},
                        {1,2,1}};
 
@@ -52,20 +52,29 @@ public class Q1_1 {
         int w = ip.getWidth();
         int h = ip.getHeight();
         ImageProcessor copy = ip.duplicate();
+
+		int startX = mask_X.length/2;
+
+
         for (int x=1; x < w-2; x++) {
             for (int y=1; y < h-2; y++) {
 
-                int pixel_x;
-                int pixel_y;
+                int pixel_x = 0;
+                int pixel_y = 0;
 
-                pixel_x = (sobel_x[0][0] * copy.getPixel(x-1,y-1)) + (sobel_x[0][1] * copy.getPixel(x,y-1)) + (sobel_x[0][2] * copy.getPixel(x+1,y-1)) +
-                    (sobel_x[1][0] * copy.getPixel(x-1,y))   + (sobel_x[1][1] * copy.getPixel(x,y))   + (sobel_x[1][2] * copy.getPixel(x+1,y)) +
-                    (sobel_x[2][0] * copy.getPixel(x-1,y+1)) + (sobel_x[2][1] * copy.getPixel(x,y+1)) + (sobel_x[2][2] * copy.getPixel(x+1,y+1));
+				for(int filterX = -startX; filterX < startX + 1; filterX++) {
+					for(int filterY = -startX; filterY < startX + 1; filterY++) {
 
+						pixel_x += copy.getPixelValue(x + filterX, y + filterY) * mask_X[filterX+startX][filterY+startX];
+					}
+				}
 
-                pixel_y = (sobel_y[0][0] * copy.getPixel(x-1,y-1)) + (sobel_y[0][1] * copy.getPixel(x,y-1)) + (sobel_y[0][2] * copy.getPixel(x+1,y-1)) +
-                    (sobel_y[1][0] * copy.getPixel(x-1,y))   + (sobel_y[1][1] * copy.getPixel(x,y))   + (sobel_y[1][2] * copy.getPixel(x+1,y)) +
-                    (sobel_y[2][0] * copy.getPixel(x-1,y+1)) + (sobel_y[2][1] * copy.getPixel(x,y+1)) + (sobel_x[2][2] * copy.getPixel(x+1,y+1));
+				for(int filterX = -startX; filterX < startX + 1; filterX++) {
+					for(int filterY = -startX; filterY < startX + 1; filterY++) {
+
+						pixel_y += copy.getPixelValue(x + filterX, y + filterY) * mask_Y[filterX+startX][filterY+startX];
+					}
+				}
 
                 int val = (int)Math.sqrt((pixel_x * pixel_x) + (pixel_y * pixel_y));
 
