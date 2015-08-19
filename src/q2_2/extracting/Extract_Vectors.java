@@ -50,13 +50,7 @@ public class Extract_Vectors {
 			if(!face[i].isDirectory()){
 				ImagePlus image = new ImagePlus(face[i].getAbsolutePath());
 
-				Manipulation.threshold(image.getChannelProcessor());
-
-				new ImageWindow(image);
-
-				break;
-
-				//featuresOfImagesFaces[i] = extractFeatures(image);
+				featuresOfImagesFaces[i] = extractFeatures(image);
 			}
 		}
 
