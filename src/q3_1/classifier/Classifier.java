@@ -33,6 +33,7 @@ public class Classifier {
 	public void testClassifier(Instances test) {
 
 		try {
+			//Evaluate the model with the test
 			eval = new Evaluation(test);
 			eval.evaluateModel(classifier, test);
 		} catch (Exception e) {
@@ -62,13 +63,13 @@ public class Classifier {
 		jf.setVisible(true);
 		tv.fitToScreen();
 
+		//Print all the information about the evaluation
 		String strSummary = eval.toSummaryString();
 		System.out.println(strSummary);
 
 		try {
 			System.out.println(eval.toClassDetailsString());
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

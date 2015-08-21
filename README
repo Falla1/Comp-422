@@ -1,0 +1,20 @@
+location = The location of files means the folder with 1.1, 1.2, 1.3 ... folders in it.
+
+For example.
+
+/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/
+
+The following are different parameters:
+
+Q1_1 location
+Q1_2a location
+Q1_2b location
+Q1_3 location
+Q2_1 location
+Q2_2 location (Extract|Naive)
+Q3_1 location (true|false) True will use 6 features, false will use all
+
+Example of running Q1_1
+
+java -jar Runnable.jar Q3_1 /u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/ false
+

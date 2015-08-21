@@ -21,11 +21,14 @@ public class Naive {
 	Classifier bayes;
 	Instances training;
 
+	String dir;
 	/**
 	 * 0 = Face
 	 * 1 = Non-Face
+	 * @param dir
 	 */
-	public Naive(){
+	public Naive(String dir){
+		this.dir = dir;
 		setup();
 		loadTrainingSet();
 		testSet();
@@ -39,7 +42,7 @@ public class Naive {
 		Evaluation eva;
 
 		try {
-			loader.setSource(new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.2/mit-cbcl-faces-balanced/TabDataSet/test.csv"));
+			loader.setSource(new File(dir + "/2.2/mit-cbcl-faces-balanced/test.csv"));
 			test = loader.getDataSet();
 			test.setClass(test.attribute("class"));
 
@@ -131,7 +134,7 @@ public class Naive {
 		CSVLoader loader = new CSVLoader();
 
 		try {
-			loader.setSource(new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.2/mit-cbcl-faces-balanced/TabDataSet/train.csv"));
+			loader.setSource(new File(dir + "2.2/mit-cbcl-faces-balanced/train.csv"));
 			training = loader.getDataSet();
 			training.setClass(training.attribute("class"));
 			bayes.buildClassifier(training);

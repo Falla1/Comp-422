@@ -7,9 +7,9 @@ import weka.core.Instances;
 
 public class Main {
 
-	public Main(String type){
+	public Main(String type, String dir){
 
-		Reader r = new Reader();
+		Reader r = new Reader(dir);
 		r.readAll(Boolean.valueOf(type));
 		r.splitData();
 
@@ -28,10 +28,5 @@ public class Main {
 
 	}
 
-	public static void main(String args[]){
-
-		new Main(args[0]);
-
-	}
 
 }

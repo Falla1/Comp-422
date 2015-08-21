@@ -25,26 +25,36 @@ public class Extract_Vectors {
 	public static final int featureSize = 10;
 	private Feature[] features = new Feature[featureSize];
 	private String type;
+	String dir;
 
-	public Extract_Vectors(String type){
+	public Extract_Vectors(String type, String dir){
+		this.dir = dir;
 		this.type = type;
 		createFeatureArray();
 		extract();
 	}
 
+	/**
+	 * Save to .csv files
+	 * @param featuresOfImagesFaces
+	 * @param featuresOfImagesNonFaces
+	 */
 	private void save(double[][] featuresOfImagesFaces, double[][] featuresOfImagesNonFaces) {
-		Storage storage = new Storage("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.2/mit-cbcl-faces-balanced/TabDataSet/" + type + ".csv");
+		Storage storage = new Storage(dir + "/2.2/mit-cbcl-faces-balanced/" + type + ".csv");
 
 		storage.saveData(featuresOfImagesFaces,featuresOfImagesNonFaces);
 
 	}
 
 	private void extract(){
-		File[] face = new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.2/mit-cbcl-faces-balanced/" + type + "/face")
+		//Getting the face images
+		//Loading them in
+		File[] face = new File(dir + "2.2/mit-cbcl-faces-balanced/" + type + "/face")
 		.listFiles();
 
 		double[][] featuresOfImagesFaces = new double[face.length][featureSize];
 
+		//Extracting all the face images features
 		for(int i = 0 ; i <  face.length ; i ++){
 
 			if(!face[i].isDirectory()){
@@ -54,11 +64,14 @@ public class Extract_Vectors {
 			}
 		}
 
-		File[] non_face = new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.2/mit-cbcl-faces-balanced/" + type + "/non-face")
+		//Getting the non-face images
+		//Loading them in
+		File[] non_face = new File(dir + "2.2/mit-cbcl-faces-balanced/" + type + "/non-face")
 		.listFiles();
 
 		double[][] featuresOfImagesNonFaces = new double[non_face.length][featureSize];
 
+		//Extracting all the non face images features
 		for(int i = 0 ; i <  non_face.length ; i ++){
 
 			if(!non_face[i].isDirectory()){
@@ -72,12 +85,16 @@ public class Extract_Vectors {
 		save(featuresOfImagesFaces,featuresOfImagesNonFaces);
 	}
 
+	/**
+	 * Extracts the features for the image that is passed
+	 * @param image
+	 * @return The feature vectors
+	 */
 	private double[] extractFeatures(ImagePlus image){
 
 		double[] featureValues = new double[featureSize];
 
 		ImageProcessor ip = image.getProcessor();
-
 
 		for(int i = 0 ; i < features.length ; i ++){
 

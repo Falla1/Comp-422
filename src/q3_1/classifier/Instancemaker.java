@@ -23,6 +23,7 @@ public class Instancemaker {
 		Instances instances;
 
 		try{
+			//Create a temp csv file
 			tempFile = new File("tmp");
 
 			PrintWriter pw = null;
@@ -33,6 +34,7 @@ public class Instancemaker {
 				throw new Error(e);
 			}
 
+			//Load the data into the csv file
 			for(int i = 0 ; i < Reader.featureSize ; i ++){
 				pw.print(i + ",");
 			}
@@ -50,6 +52,7 @@ public class Instancemaker {
 				pw.flush();
 			}
 
+			//Load the instances from the temp csv file
 			loader.setSource(new File("tmp"));
 			instances = loader.getDataSet();
 			instances.setClass(instances.attribute("class"));

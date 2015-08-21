@@ -2,6 +2,7 @@ package q1_1;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 import q1_2.Q1_2b;
 import q2_1.Q2_1;
@@ -22,16 +23,13 @@ public class Q1_1 {
                        {1,2,1}};
 
 
-	public static void main(String args[]){
+	public Q1_1(String dir){
 
-		Q1_1 q1 = new Q1_1();
-
-		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.1/test-pattern.tif");
-		//ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.1/Test.jpg");
+		ImagePlus image = new ImagePlus(dir  + "/1.1/test-pattern.tif");
 
 		ImageProcessor ip = image.getProcessor();
 
-		q1.run(ip);
+		run(ip);
 
 		final ImageWindow window = new ImageWindow(image);
 
@@ -42,7 +40,7 @@ public class Q1_1 {
 				window.dispose();
 			}
 		}
-				);
+		);
 	}
 
 
@@ -53,6 +51,7 @@ public class Q1_1 {
         int h = ip.getHeight();
         ImageProcessor copy = ip.duplicate();
 
+        //Getting the offset value
 		int startX = mask_X.length/2;
 
 
@@ -62,6 +61,8 @@ public class Q1_1 {
                 int pixel_x = 0;
                 int pixel_y = 0;
 
+                //Looping around the center node
+                //Dependent on the offset value
 				for(int filterX = -startX; filterX < startX + 1; filterX++) {
 					for(int filterY = -startX; filterY < startX + 1; filterY++) {
 
@@ -76,6 +77,7 @@ public class Q1_1 {
 					}
 				}
 
+				//Calculating the new value
                 int val = (int)Math.sqrt((pixel_x * pixel_x) + (pixel_y * pixel_y));
 
                 if(val < 0)

@@ -37,6 +37,7 @@ public class Storage {
 			for(int j = 0 ; j < featuresOfImagesFaces[i].length ; j ++){
 				pw.print(featuresOfImagesFaces[i][j] + ",");
 			}
+			//Setting the class variable
 			pw.println("face");
 			pw.flush();
 		}
@@ -46,6 +47,7 @@ public class Storage {
 				pw.print(featuresOfImagesNonFaces[i][j] + ",");
 			}
 			pw.println("non-face");
+			//Setting the class variable
 			pw.flush();
 		}
 

@@ -13,21 +13,10 @@ public class Q1_2b {
 
 	int matrixSize = 5;
 
-	public static void main(String args[]){
+	public Q1_2b(String dir){
 
-		Q1_2b q2 = new Q1_2b();
-		q2.run();
-	}
-
-	public void run() {
-
-		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.2/ckt-board-saltpep.tif");
+		ImagePlus image = new ImagePlus(dir  + "/1.2/ckt-board-saltpep.tif");
 		ImageProcessor ip = image.getProcessor();
-		/*
-		GaussianBlur blur = new GaussianBlur();
-		blur.blurGaussian(ip, 1, 1, 0.02);
-		 */
-
 
 		int w = ip.getWidth();
 		int h = ip.getHeight();
@@ -58,6 +47,7 @@ public class Q1_2b {
 
 				Float pixel_x;
 
+				//Depends on number of points, will depend on the 'middle' value
 				if(pixelList.size() % 2 == 0){
 					Float one = pixelList.get(((pixelList.size()/2) -1));
 					Float two = pixelList.get((pixelList.size()/2));
@@ -72,7 +62,7 @@ public class Q1_2b {
 
 					}}
 
-
+				//Bound the value
 				if(pixel_x < 0)
 				{
 					pixel_x = (float) 0.0;

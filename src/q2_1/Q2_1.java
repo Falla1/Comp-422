@@ -21,8 +21,11 @@ public class Q2_1 {
 
 	private final int threshold = 170;
 
-	public Q2_1(){
+	public Q2_1(String dir){
 
+		ImagePlus image = new ImagePlus(dir  + "2.1/hubbleNoise.tif");
+
+		ImageProcessor ip = image.getProcessor();
 
 		sobel_x = new double[matrixSize][matrixSize];
 
@@ -32,20 +35,9 @@ public class Q2_1 {
 			}
 		}
 
-	}
+		meanFilter(ip);
 
-	public static void main(String args[]){
-
-		Q2_1 q2 = new Q2_1();
-
-		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/2.1/hubbleNoise.tif");
-		//ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.1/Test.jpg");
-
-		ImageProcessor ip = image.getProcessor();
-
-		q2.meanFilter(ip);
-
-		q2.threshold(ip);
+		threshold(ip);
 
 		final ImageWindow window = new ImageWindow(image);
 
@@ -86,7 +78,7 @@ public class Q2_1 {
 					value = 255;
 				}
 				else{
-					throw new Error("Unsure why this would happen");
+					throw new Error("Unsure why this would happen. Debugging purposes.");
 				}
 
 				ip.putPixelValue(x,y,value);

@@ -17,19 +17,30 @@ public class Reader {
 	private List<ImageData> trainingSet = new ArrayList<ImageData>();
 	private List<ImageData> testSet = new ArrayList<ImageData>();
 
+	String dir;
+
+	public Reader(String dir) {
+		this.dir = dir;
+	}
+
+	/**
+	 *
+	 * @param sixMorph
+	 */
 	public void readAll(boolean sixMorph){
 
 		File[] files;
 
 		if(!sixMorph){
-			files = new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/3.1/mfeat-digits/")
+			files = new File(dir + "/3.1/mfeat-digits/")
 			.listFiles();
 			featureSize = 649;
 		} else{
-			files = new File[]{new File("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/3.1/mfeat-digits/mfeat-mor")};
-			featureSize = 7;
+			files = new File[]{new File(dir + "/3.1/mfeat-digits/mfeat-mor")};
+			featureSize = 6;
 		}
 
+		//Read the file in
 		for(int i = 0 ; i < files.length ; i ++){
 
 			Scanner sc = null;
@@ -76,8 +87,12 @@ public class Reader {
 		}
 	}
 
+	/**
+	 * Split the data evenly
+	 * 100 per class for test and training
+	 * 1000 instances in training and test
+	 */
 	public void splitData(){
-
 
 		int imageDataSize = imageData.size();
 

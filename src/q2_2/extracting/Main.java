@@ -3,10 +3,10 @@ package q2_2.extracting;
 public class Main {
 
 
-	public static void main(String args[]){
+	public Main(String dir){
 
-		new Extract_Vectors("test");
-		new Extract_Vectors("train");
+		new Extract_Vectors("test",dir);
+		new Extract_Vectors("train",dir);
 
 
 	}

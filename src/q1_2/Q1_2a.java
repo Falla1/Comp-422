@@ -12,16 +12,13 @@ public class Q1_2a {
 
 	private int matrixSize = 5;
 
-	public static void main(String args[]){
+	public Q1_2a(String dir){
 
-		Q1_2a q2 = new Q1_2a();
-
-		ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.2/ckt-board-saltpep.tif");
-		//ImagePlus image = new ImagePlus("/u/students/shawmarc/Desktop/2015/Comp422/A1/project1-images/1.1/Test.jpg");
+		ImagePlus image = new ImagePlus(dir  + "1.2/ckt-board-saltpep.tif");
 
 		ImageProcessor ip = image.getProcessor();
 
-		q2.meanFilter(ip);
+		meanFilter(ip);
 
 		final ImageWindow window = new ImageWindow(image);
 
@@ -44,13 +41,15 @@ public class Q1_2a {
 		int h = ip.getHeight();
 
 		ImageProcessor copy = ip.duplicate();
-
+        //Getting the offset value
 		int startX = matrixSize/2;
 
 		for (int x=startX; x < w - startX; x++) {
 			for (int y=startX; y < h - startX; y++) {
 
 				int pixel_x = 0;
+                //Looping around the center node
+                //Dependent on the offset value
 
 				for(int filterX = -startX; filterX < startX + 1; filterX++) {
 					for(int filterY = -startX; filterY < startX + 1; filterY++) {
@@ -59,6 +58,7 @@ public class Q1_2a {
 					}
 				}
 
+				//Bounding
 				if(pixel_x < 0)
 				{
 					pixel_x = 0;
