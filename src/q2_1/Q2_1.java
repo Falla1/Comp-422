@@ -23,7 +23,7 @@ public class Q2_1 {
 
 	public Q2_1(String dir){
 
-		ImagePlus image = new ImagePlus(dir  + "2.1/hubbleNoise.tif");
+		ImagePlus image = new ImagePlus(dir  + "2.1/hubble.tif");
 
 		ImageProcessor ip = image.getProcessor();
 
